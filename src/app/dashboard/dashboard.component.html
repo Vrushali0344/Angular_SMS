@@ -1,0 +1,109 @@
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    </head>
+
+
+    <div class='dashboard' >
+        <div class="dashboard-nav" [ngClass]="{ 'dark-mode': isDarkMode, 'light-mode': !isDarkMode }">
+            <header><a href="/home" class="menu-toggle"></a>
+                
+                
+        <a href="#" class="brand-logo"><i class="fa fa-envelope" aria-hidden="true"></i>
+                     <span>SMS 123</span></a></header>
+            <nav class="dashboard-nav-list">
+                     <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i>Home </a>
+                <a [routerLink]="['/home']" routerLinkActive="router-link-active" 
+                class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a  class="dashboard-nav-item" [routerLink]="['/message']" routerLinkActive="router-link-active"  ><i class="fas fa-comment-alt" ></i>Message</a>
+            
+            <div class='dashboard-nav-dropdown'><a  class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class='fab fa-whatsapp-square'></i>WhatsApp </a>
+                    
+                </div>
+                <div class='dashboard-nav-dropdown'><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                        class="fas fa-users"></i>Manage Items </a>
+                   
+                </div>
+                <div class='dashboard-nav-dropdown'><a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
+                        class="fas fa-cogs"></i>Setting</a>
+                   
+                </div>
+                <a [routerLink]="['/report']" routerLinkActive="router-link-active"  class="dashboard-nav-item"><i class="fas fa-chart-bar"></i>View Report </a> 
+
+                <div class="mode">
+                  <input type="checkbox" class="checkbox" id="checkbox"  (change)="toggleMode()" [checked]="isDarkMode">
+                  <label for="checkbox" class="checkbox-label">
+                    <i class="fas fa-moon"></i> <!-- Icon for dark mode -->
+                    <i class="fas fa-sun"></i> <!-- Icon for light mode -->
+                    <span class="ball"></span>
+                  </label>
+                </div>
+                
+                <br>
+               <br>
+              <li class="small" href="#"><button [routerLink]="['/home']" routerLinkActive="router-link-active"  class="btn">
+                <span class="btn-text-one">User Click me</span>
+                <span class="btn-text-two">Log Out</span>
+            </button></li>
+            </nav>
+        </div>
+
+        <div class='dashboard-app'>
+            <header class='dashboard-toolbar'>
+              <div class="display">
+              <p><strong>{{ currentDateTime }}</strong></p>
+            </div>
+                <div class="dropdown" (click)="toggleDropdown()">
+                    <button class="btn1" type="button">
+                      Balance
+                    </button>
+                    <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
+                      <a class="dropdown-item">SMS:{{count}}</a>
+                      <a class="dropdown-item">Mysms : 0</a>
+                      <a class="dropdown-item">Notification : 0</a>
+                      <a class="dropdown-item">WhatsApp : 0</a>
+                      <a class="dropdown-item">Voice : 0</a>
+                      <!-- Add more options as needed -->
+                    </div>
+                  </div>
+                  
+                
+                <marquee  id="marquee" style="color: #0f0f0f;font-size: 18px; font-weight: bold; padding-top: 7px;">This is My SMS Dashboard Source 🡺</marquee>
+
+                <div class="spacer">                     
+                       <div class="menu">
+                        <img style="margin-right:20px; position:relative; top:9px;" src="https://cdn-icons-png.flaticon.com/128/497/497789.png" id="warning" height="25px" width="25px" />
+                        <img style="margin-right:20px; position:relative; top:10px;" src="https://cdn-icons-png.flaticon.com/128/8056/8056397.png" id="mail" height="20px" width="20px" />
+                          <img style="margin-right:0px; position:relative; top:10px;" src="https://cdn-icons-png.flaticon.com/128/74/74472.png" id="mainimg" height="20px" width="20px">
+<!--                         
+                          <div class="dropdown" (click)="toggleDropdown1()">
+                            <button class="btn1" type="button">
+                              Demo
+                            </button>
+                            <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen1}">
+                              <a class="dropdown-item">My Profile</a>
+                              <a class="dropdown-item">Password</a>
+                              <a class="dropdown-item">Bank Detail</a>
+                              <a class="dropdown-item">LogOut</a>
+                             
+                            </div>
+                          </div> -->
+                          
+                       </div>
+              
+                  </div>
+                
+            </header>         
+              
+
+
+    
+        
+    </div>
+  </div>
+
+
+
+    <router-outlet></router-outlet>
+ 

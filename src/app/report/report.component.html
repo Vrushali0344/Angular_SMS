@@ -1,0 +1,76 @@
+<main>
+<div class="dashboard" *ngIf="!isContainer2Visible" >
+
+      <div class="table-wrapper">
+            <table class="fl-table">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>DateTime</th>
+                  <th>Message</th>
+                  <th>Mobile</th>
+                  <th>Credit </th>
+                  <th>View</th>
+                  
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of report; index as i">
+                  <td>{{i+1}}</td>
+                  <td>{{ item.datetime }}</td>
+                  <td>{{ item.Message }}</td>
+                  <td>{{ item.valid }}</td>
+                  <td>{{ item.Credit}}</td>
+                  <td>{{ item.view}}<i class="fas fa-eye" (click)="toggleVisibility(i)"></i></td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+          </div> 
+
+
+
+
+  <div class="dashboard2" *ngIf="selectedItemIndex !== null && isContainer2Visible" [ngClass]="{'container2': isContainer2Visible,'d-none':!isContainer2Visible}">
+
+    <h2>REPORT DETAILS</h2>
+    <br />
+   
+   
+      <div class="container-fluid">
+        <div class="table-wrapper">
+            <table class="fl-table">
+              <thead>
+                <tr>
+                
+                  <th>DateTime</th>
+                
+                  <th>MobileNo</th>
+                  <th>SenderId </th>
+                  <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let mobileNo of report[selectedItemIndex].MobileNo.split(',');let i = index">
+                  <tr>
+                    <td>{{ report[selectedItemIndex].datetime }}</td>
+                    <td>{{ mobileNo.trim() }}</td>
+                    <td>{{ report[selectedItemIndex].Sender }}</td>
+                    <td>{{ report[selectedItemIndex].Status.split(',')[i] }}</td> <!-- Show status for each mobile number -->
+
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          </div> 
+        </div>
+
+     <button id="report" (click)="downloadReportAsExcel()">Download</button>
+
+</main>
+  <router-outlet></router-outlet> 
+
+
